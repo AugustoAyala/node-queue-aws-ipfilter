@@ -1,0 +1,26 @@
+{
+  "name": "pruebanode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "keywords": [],
+  "author": "Augusto Ayala",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.480.0",
+    "bull": "^3.10.0",
+    "express": "^4.17.0",
+    "express-ipfilter": "^1.0.1",
+    "morgan": "^1.9.1",
+    "node-fetch": "^2.6.0",
+    "redis": "^2.8.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}
