@@ -5,8 +5,8 @@ const app = express();
 const Bull = require('bull');
 const myFirstQueue = new Bull('my-first-queue', 'redis://127.0.0.1:6379');
 const mySecondQueue = new Bull('my-second-queue', 'redis://127.0.0.1:6379');
-const ipfilter = require('../node_modules/express-ipfilter/lib/ipfilter');
-const endpoint = require('./endpoint');
+const ipFilter = require('../node_modules/express-ipfilter/lib/ipfilter');
+const endPoint = require('./queue-second');
 const service = require('./service');
 //const awsDelivery = require('./delivery/aws');
 
@@ -23,7 +23,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(morgan('dev')); 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-app.use(ipfilter(ips, { mode: 'allow' }));
+app.use(ipFilter(ips, { mode: 'allow' }));
 
 
 app.use('/', indexRoutes); 
@@ -32,7 +32,7 @@ app.use('/', indexRoutes);
 myFirstQueue.process(async (job, done) => {
 	//await sendEmail(email, subject, body_html, job.data.content)
 	await console.log(job.data, 'respuesta de aws');
-	done(endpoint.end(job.data));
+	done(endPoint.end(job.data));
   
 });
 mySecondQueue.process(async (job, done) => {
