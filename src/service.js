@@ -1,10 +1,10 @@
-const fetch = require('node-fetch')
-const Bull = require('bull')
-const myFinishQueue = new Bull('my-finish-queue', 'redis://127.0.0.1:6379')
+const fetch = require('node-fetch');
+const Bull = require('bull');
+const myFinishQueue = new Bull('my-finish-queue', 'redis://127.0.0.1:6379');
 
 module.exports = {
     async externo(data) {
-        var url = 'http://localhost:3000/externo'
+        var url = 'http://localhost:3000/externo';
 
         fetch(url, {
             method: 'POST',
@@ -22,18 +22,18 @@ module.exports = {
                         json[0] === '8' ||
                         json[0] === '9')
                 ) {
-                    console.log(json, 'respuesta de servicio externo')
+                    console.log(json, 'respuesta de servicio externo');
                     const job = await myFinishQueue.add({
                         content: data,
-                    })
+                    });
                     console.log(
                         job.data.content.content.content,
                         'informacion guardada en cola final'
-                    )
+                    );
                 } else {
-                    console.log(json, 'no cumple la condiciones de phone')
+                    console.log(json, 'no cumple la condiciones de phone');
                 }
-            })
-        return
+            });
+        return;
     },
-}
+};
