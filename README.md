@@ -1,7 +1,7 @@
 # node.js queue aws ipfilter
 
-# autor: AUGUSTO ANIBAL AYALA email: ayalaaugusto@outlook.com
-## Usar
+## autor: AUGUSTO ANIBAL AYALA email: ayalaaugusto@outlook.com
+
 
 ``` bash
 #intall redis
