@@ -1,3 +1,5 @@
+'use strict'
+
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
@@ -28,7 +30,7 @@ app.use('/', indexRoutes);
 
 myFirstQueue.process(async (job, done) => {
     //await sendEmail(email, subject, body_html, job.data.content)
-    await console.log(job.data, 'respuesta de aws');
+    console.log(job.data, 'respuesta de aws');
     done(endPoint.end(job.data));
 });
 mySecondQueue.process(async (job, done) => {
