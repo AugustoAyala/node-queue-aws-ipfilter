@@ -1,3 +1,5 @@
+'use strict'
+
 const express = require('express');
 const router = express.Router();
 const fetch = require('node-fetch');
@@ -5,7 +7,7 @@ const Bull = require('bull');
 const myFirstQueue = new Bull('my-first-queue', 'redis://127.0.0.1:6379');
 
 router.post('/url', async (req, res) => {
-    res.json({ status: 'se recibio con exito' });
+    res.status(200).json({ message: 'se recibio con exito' });
 });
 router.post('/externo', async (req, res) => {
     res.json(req.body.content.content.phone);
@@ -26,7 +28,6 @@ router.get('/api/:firstname/:lastname/:email/:zipcode/:phone', (req, res) => {
         zipcode: code,
         phone: req.params.phone,
     };
-    //Cambiar por la url que corresponda en este caso para pruba local llama a esta ruta
     var url = 'http://localhost:3000/url';
     //var url = 'https://beeceptor.com';
     fetch(url, {
