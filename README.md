@@ -22,8 +22,5 @@ npm install
 #run app
 npm run dev
 
-#aws
-El codigo para envio de correo a aws se encuentra comentado, con las intruciones anteriores es para probarlo en local.
-
 
 ```
